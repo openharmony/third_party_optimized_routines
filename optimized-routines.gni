@@ -26,10 +26,17 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-OPTRT_STRING_ARM_SRC_FILES = [
-  "//third_party/optimized-routines/string/arm/memchr.S",
-  "//third_party/optimized-routines/string/arm/memcpy.S",
-  "//third_party/optimized-routines/string/arm/strcmp.S",
-  "//third_party/optimized-routines/string/arm/strcpy.c",
-  "//third_party/optimized-routines/string/arm/strlen-armv6t2.S",
+OPTRTDIR = get_path_info(".", "abspath")
+
+OPTRT_STRING_ARM_SRC_FILES_FOR_ARMV7_A = [
+  "$OPTRTDIR/string/arm/memchr.S",
+  "$OPTRTDIR/string/arm/memcpy.S",
+  "$OPTRTDIR/string/arm/strcmp.S",
+  "$OPTRTDIR/string/arm/strcpy.c",
+  "$OPTRTDIR/string/arm/strlen-armv6t2.S",
+]
+
+OPTRT_STRING_ARM_SRC_FILES_FOR_ARMV7_M = [
+  "$OPTRTDIR/string/arm/strcpy.c",
+  "$OPTRTDIR/string/arm/strlen-armv6t2.S",
 ]
