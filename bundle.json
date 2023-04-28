@@ -13,14 +13,17 @@
         "en": "README"
     },
     "component": {
-        "name": "thirdparty_optimized_routines",
+        "name": "optimized_routines",
         "subsystem": "",
         "syscap": [],
         "features": [],
-        "adapted_system_type": [],
-        "rom": "",
-        "ram": "",
-        "deps": {
+        "adapted_system_type": [
+            "mini",
+            "small"
+        ],
+        "rom": "36KB",
+        "ram": "72KB",
+        "external_deps": {
             "components": [],
             "third_party": []
         },
