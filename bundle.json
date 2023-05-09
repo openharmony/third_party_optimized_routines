@@ -23,7 +23,7 @@
         ],
         "rom": "36KB",
         "ram": "72KB",
-        "external_deps": {
+        "deps": {
             "components": [],
             "third_party": []
         },
