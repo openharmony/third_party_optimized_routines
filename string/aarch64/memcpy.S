@@ -58,6 +58,7 @@ ENTRY (__memcpy_aarch64)
 	PTR_ARG (0)
 	PTR_ARG (1)
 	SIZE_ARG (2)
+	prfm	PLDL1KEEP, [src]
 	add	srcend, src, count
 	add	dstend, dstin, count
 	cmp	count, 128
