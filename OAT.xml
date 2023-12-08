@@ -60,6 +60,9 @@ All configurations in this file will be merged to OAT-Default.xml, if you have a
                 <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="string/test/.*" rule="may" filefilter="defaultPolicyFilter" desc="Other process calls"/>
                 <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="string/x86_64/.*" rule="may" filefilter="defaultPolicyFilter" desc="Other process calls"/>
                 <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="string/Dir.mk" rule="may" filefilter="defaultPolicyFilter" desc="Other process calls"/>  
+                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="Makefile" rule="may" filefilter="defaultPolicyFilter" desc="Other process calls"/>  
+
+            
             </policy>
         </policylist>
         <filefilterlist>
