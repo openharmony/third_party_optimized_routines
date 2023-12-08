@@ -68,6 +68,8 @@ All configurations in this file will be merged to OAT-Default.xml, if you have a
         </policylist>
         <filefilterlist>
             <filefilter name="defaultPolicyFilter" desc="Filters for compatibility, license header policies">
+                 <filteritem type="filepath" name="math/README.contributors" desc="官方自带文件"/>
+                 <filteritem type="filepath" name="LICENSE" desc="官方自带文件"/>
             </filefilter>
 
             <filefilter name="binaryFileTypePolicyFilter" desc="Filters for binary file policies">
