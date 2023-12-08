@@ -19,7 +19,7 @@
     policylist:
     1. policy: If the OAT-Default.xml policies do not meet your requirements, please add policies here.
     2. policyitem: The fields type, name, path, desc is required, and the fields rule, group, filefilter is optional,the default value is:
-    <policyitem type="" name="" path="" desc="" rule="may" group="defaultGroup" filefilter="defaultPolicyFilter"/>
+    <policyitem type="" name="" path="" desc="" rule="may" filefilter="defaultPolicyFilter"/>
     3. policyitem type:
         "compatibility" is used to check license compatibility in the specified path;
         "license" is used to check source license header in the specified path;
@@ -52,14 +52,14 @@ All configurations in this file will be merged to OAT-Default.xml, if you have a
         <licensefile></licensefile>
         <policylist>
             <policy>
-                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="math/.*" rule="may" group="defaultGroup" filefilter="defaultPolicyFilter" desc="其他进程调用"/>
-                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="networking/.*" rule="may" group="defaultGroup" filefilter="defaultPolicyFilter" desc="其他进程调用"/>
-                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="string/aarch64/.*" rule="may" group="defaultGroup" filefilter="defaultPolicyFilter" desc="其他进程调用"/>
-                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="string/include/.*" rule="may" group="defaultGroup" filefilter="defaultPolicyFilter" desc="其他进程调用"/>
-                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="string/bench/.*" rule="may" group="defaultGroup" filefilter="defaultPolicyFilter" desc="其他进程调用"/>
-                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="string/test/.*" rule="may" group="defaultGroup" filefilter="defaultPolicyFilter" desc="其他进程调用"/>
-                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="string/x86_64/.*" rule="may" group="defaultGroup" filefilter="defaultPolicyFilter" desc="其他进程调用"/>
-                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="string/Dir.mk" rule="may" group="defaultGroup" filefilter="defaultPolicyFilter" desc="其他进程调用"/>  
+                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="math/.*" rule="may" filefilter="defaultPolicyFilter" desc="Other process calls"/>
+                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="networking/.*" rule="may" filefilter="defaultPolicyFilter" desc="Other process calls"/>
+                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="string/aarch64/.*" rule="may" filefilter="defaultPolicyFilter" desc="Other process calls"/>
+                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="string/include/.*" rule="may" filefilter="defaultPolicyFilter" desc="Other process calls"/>
+                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="string/bench/.*" rule="may" filefilter="defaultPolicyFilter" desc="Other process calls"/>
+                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="string/test/.*" rule="may" filefilter="defaultPolicyFilter" desc="Other process calls"/>
+                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="string/x86_64/.*" rule="may" filefilter="defaultPolicyFilter" desc="Other process calls"/>
+                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="string/Dir.mk" rule="may" filefilter="defaultPolicyFilter" desc="Other process calls"/>  
             </policy>
         </policylist>
         <filefilterlist>
