@@ -49,10 +49,23 @@ All configurations in this file will be merged to OAT-Default.xml, if you have a
 
 <configuration>
     <oatconfig>
+        <licensefile></licensefile>
+        <policylist>
+            <policy>
+                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="math/.*" rule="may" group="defaultGroup" filefilter="defaultPolicyFilter" desc="其他进程调用"/>
+                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="networking/.*" rule="may" group="defaultGroup" filefilter="defaultPolicyFilter" desc="其他进程调用"/>
+                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="string/aarch64/.*" rule="may" group="defaultGroup" filefilter="defaultPolicyFilter" desc="其他进程调用"/>
+                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="string/include/.*" rule="may" group="defaultGroup" filefilter="defaultPolicyFilter" desc="其他进程调用"/>
+                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="string/bench/.*" rule="may" group="defaultGroup" filefilter="defaultPolicyFilter" desc="其他进程调用"/>
+                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="string/test/.*" rule="may" group="defaultGroup" filefilter="defaultPolicyFilter" desc="其他进程调用"/>
+                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="string/x86_64/.*" rule="may" group="defaultGroup" filefilter="defaultPolicyFilter" desc="其他进程调用"/>
+                <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="string/Dir.mk" rule="may" group="defaultGroup" filefilter="defaultPolicyFilter" desc="其他进程调用"/>  
+            </policy>
+        </policylist>
         <filefilterlist>
             <filefilter name="binaryFileTypePolicyFilter" desc="Filters for binary file policies">
-		<filteritem type="filename" name="*.pdf" desc="官方自带文件"/>
+		        <filteritem type="filename" name="*.pdf" desc="官方自带文件"/>
             </filefilter>
-        </filefilterlist>
+		</filefilterlist>
     </oatconfig>
 </configuration>
