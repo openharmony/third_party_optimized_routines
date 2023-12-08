@@ -70,6 +70,15 @@ All configurations in this file will be merged to OAT-Default.xml, if you have a
             <filefilter name="defaultPolicyFilter" desc="Filters for compatibility, license header policies">
                  <filteritem type="filepath" name="math/README.contributors" desc="官方自带文件"/>
                  <filteritem type="filepath" name="LICENSE" desc="官方自带文件"/>
+                 <filteritem type="filepath" name="string/README.contributors" desc="官方自带文件"/>
+                 <filteritem type="filepath" name="README.OpenSource" desc="官方自带文件"/>
+                 <filteritem type="filepath" name="README" desc="官方自带文件"/>
+                 <filteritem type="filepath" name="optimized-routines.gni" desc="不涉及license"/>
+                 <filteritem type="filepath" name="bundle.json" desc="不涉及license"/>
+                 <filteritem type="filepath" name="config.mk.dist" desc="不涉及license"/>
+
+
+
             </filefilter>
 
             <filefilter name="binaryFileTypePolicyFilter" desc="Filters for binary file policies">
