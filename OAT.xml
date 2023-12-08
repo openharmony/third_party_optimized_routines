@@ -63,9 +63,14 @@ All configurations in this file will be merged to OAT-Default.xml, if you have a
             </policy>
         </policylist>
         <filefilterlist>
+            <filefilter name="defaultPolicyFilter" desc="Filters for compatibility, license header policies">
+            </filefilter>
+
             <filefilter name="binaryFileTypePolicyFilter" desc="Filters for binary file policies">
 		        <filteritem type="filename" name="*.pdf" desc="官方自带文件"/>
             </filefilter>
+
+
 		</filefilterlist>
     </oatconfig>
 </configuration>
