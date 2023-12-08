@@ -1,8 +1,8 @@
 /*
  * strlen - calculate the length of a string
  *
- * Copyright (c) 2010-2022, Arm Limited.
- * SPDX-License-Identifier: MIT OR Apache-2.0 WITH LLVM-exception
+ * Copyright (c) 2010-2020, Arm Limited.
+ * SPDX-License-Identifier: MIT
  */
 
 #if __ARM_ARCH >= 6 && __ARM_ARCH_ISA_THUMB == 2
@@ -23,11 +23,6 @@
 #define S2HI		lsl
 #endif
 
-/* Ensure the .cantunwind directive is prepended to .fnend.
-   Leaf functions cannot throw exceptions - EHABI only supports
-   synchronous exceptions.  */
-#define IS_LEAF
-
 	/* This code requires Thumb.  */
 	.thumb
 	.syntax unified
@@ -46,8 +41,8 @@
 #define tmp2		r5
 
 ENTRY (__strlen_armv6t2)
-	prologue 4 5 push_ip=HAVE_PAC_LEAF
 	pld	[srcin, #0]
+	strd	r4, r5, [sp, #-8]!
 	bic	src, srcin, #7
 	mvn	const_m1, #0
 	ands	tmp1, srcin, #7		/* (8 - bytes) to alignment.  */
@@ -97,7 +92,6 @@ L(start_realigned):
 	beq	L(loop_aligned)
 
 L(null_found):
-	.cfi_remember_state
 	cmp	data1a, #0
 	itt	eq
 	addeq	result, result, #4
@@ -106,11 +100,11 @@ L(null_found):
 	rev	data1a, data1a
 #endif
 	clz	data1a, data1a
+	ldrd	r4, r5, [sp], #8
 	add	result, result, data1a, lsr #3	/* Bits -> Bytes.  */
-	epilogue 4 5 push_ip=HAVE_PAC_LEAF
+	bx	lr
 
 L(misaligned8):
-	.cfi_restore_state
 	ldrd	data1a, data1b, [src]
 	and	tmp2, tmp1, #3
 	rsb	result, tmp1, #0

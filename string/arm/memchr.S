@@ -1,8 +1,8 @@
 /*
  * memchr - scan memory for a character
  *
- * Copyright (c) 2010-2022, Arm Limited.
- * SPDX-License-Identifier: MIT OR Apache-2.0 WITH LLVM-exception
+ * Copyright (c) 2010-2021, Arm Limited.
+ * SPDX-License-Identifier: MIT
  */
 
 /*
@@ -23,11 +23,7 @@
 @    Removed unneeded cbz from align loop
 
 	.syntax unified
-#if __ARM_ARCH >= 8 && __ARM_ARCH_PROFILE == 'M'
-    /* keep config inherited from -march= */
-#else
 	.arch armv7-a
-#endif
 
 @ this lets us check a flag in a 00/ff byte easily in either endianness
 #ifdef __ARMEB__
@@ -36,8 +32,6 @@
 #define CHARTSTMASK(c) 1<<(c*8)
 #endif
 	.thumb
-#include "asmdefs.h"
-
 
 @ ---------------------------------------------------------------------------
 	.thumb_func
@@ -45,14 +39,11 @@
 	.p2align 4,,15
 	.global __memchr_arm
 	.type __memchr_arm,%function
-	.fnstart
-	.cfi_startproc
 __memchr_arm:
 	@ r0 = start of memory to scan
 	@ r1 = character to look for
 	@ r2 = length
 	@ returns r0 = pointer to character or NULL if not found
-	prologue
 	and	r1,r1,#0xff	@ Don't think we can trust the caller to actually pass a char
 
 	cmp	r2,#16		@ If it's short don't bother with anything clever
@@ -73,11 +64,6 @@ __memchr_arm:
 10:
 	@ At this point, we are aligned, we know we have at least 8 bytes to work with
 	push	{r4,r5,r6,r7}
-	.cfi_adjust_cfa_offset 16
-	.cfi_rel_offset 4, 0
-	.cfi_rel_offset 5, 4
-	.cfi_rel_offset 6, 8
-	.cfi_rel_offset 7, 12
 	orr	r1, r1, r1, lsl #8	@ expand the match word across to all bytes
 	orr	r1, r1, r1, lsl #16
 	bic	r4, r2, #7	@ Number of double words to work with
@@ -97,11 +83,6 @@ __memchr_arm:
 	bne	15b		@ (Flags from the subs above) If not run out of bytes then go around again
 
 	pop	{r4,r5,r6,r7}
-	.cfi_restore 7
-	.cfi_restore 6
-	.cfi_restore 5
-	.cfi_restore 4
-	.cfi_adjust_cfa_offset -16
 	and	r1,r1,#0xff	@ Get r1 back to a single character from the expansion above
 	and	r2,r2,#7	@ Leave the count remaining as the number after the double words have been done
  
@@ -116,25 +97,16 @@ __memchr_arm:
 	bne	21b		@ on r2 flags
 
 40:
-	.cfi_remember_state
 	movs	r0,#0		@ not found
-	epilogue
+	bx	lr
 
 50:
-	.cfi_restore_state
-	.cfi_remember_state
 	subs	r0,r0,#1	@ found
-	epilogue
+	bx	lr
 
 60:  @ We're here because the fast path found a hit - now we have to track down exactly which word it was
 	@ r0 points to the start of the double word after the one that was tested
 	@ r5 has the 00/ff pattern for the first word, r6 has the chained value
-	.cfi_restore_state	@ Standard post-prologue state
-	.cfi_adjust_cfa_offset 16
-	.cfi_rel_offset	4, 0
-	.cfi_rel_offset 5, 4
-	.cfi_rel_offset 6, 8
-	.cfi_rel_offset 7, 12
 	cmp	r5, #0
 	itte	eq
 	moveq	r5, r6		@ the end is in the 2nd word
@@ -154,15 +126,7 @@ __memchr_arm:
 
 61:
 	pop	{r4,r5,r6,r7}
-	.cfi_restore 7
-	.cfi_restore 6
-	.cfi_restore 5
-	.cfi_restore 4
-	.cfi_adjust_cfa_offset -16
 	subs	r0,r0,#1
-	epilogue
-	.cfi_endproc
-	.cantunwind
-	.fnend
+	bx	lr
 
 	.size	__memchr_arm, . - __memchr_arm

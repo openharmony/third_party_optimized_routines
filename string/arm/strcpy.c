@@ -2,10 +2,8 @@
  * strcpy
  *
  * Copyright (c) 2008-2020, Arm Limited.
- * SPDX-License-Identifier: MIT OR Apache-2.0 WITH LLVM-exception
+ * SPDX-License-Identifier: MIT
  */
-
-
 
 /* For GLIBC:
 #include <string.h>
@@ -129,5 +127,3 @@ __strcpy_arm (char* dst, const char* src)
        "BX LR");
 }
 /* For GLIBC: libc_hidden_builtin_def (strcpy) */
-
-
