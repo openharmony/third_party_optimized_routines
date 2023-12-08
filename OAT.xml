@@ -52,6 +52,7 @@ All configurations in this file will be merged to OAT-Default.xml, if you have a
         <licensefile></licensefile>
         <policylist>
             <policy>
+                <policyitem type="license" name="MIT" path=".*"  desc="兼容license"/>
                 <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="math/.*" rule="may" filefilter="defaultPolicyFilter" desc="Other process calls"/>
                 <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="networking/.*" rule="may" filefilter="defaultPolicyFilter" desc="Other process calls"/>
                 <policyitem type="compatibility" name="GPL-2.0+-with-LLVM-exception" path="string/aarch64/.*" rule="may" filefilter="defaultPolicyFilter" desc="Other process calls"/>
