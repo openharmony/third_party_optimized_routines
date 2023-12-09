@@ -3,7 +3,7 @@
 # ULP error plot tool.
 #
 # Copyright (c) 2019, Arm Limited.
-# SPDX-License-Identifier: MIT OR Apache-2.0 WITH LLVM-exception
+# SPDX-License-Identifier: MIT
 
 import numpy as np
 import matplotlib.pyplot as plt

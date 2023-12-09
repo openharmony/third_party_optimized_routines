@@ -2,7 +2,7 @@
  * Public API.
  *
  * Copyright (c) 2020, Arm Limited.
- * SPDX-License-Identifier: MIT OR Apache-2.0 WITH LLVM-exception
+ * SPDX-License-Identifier: MIT
  */
 
 unsigned short __chksum (const void *, unsigned int);

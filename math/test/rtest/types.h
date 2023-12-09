@@ -2,7 +2,7 @@
  * types.h
  *
  * Copyright (c) 2005-2019, Arm Limited.
- * SPDX-License-Identifier: MIT OR Apache-2.0 WITH LLVM-exception
+ * SPDX-License-Identifier: MIT
  */
 
 #ifndef mathtest_types_h
