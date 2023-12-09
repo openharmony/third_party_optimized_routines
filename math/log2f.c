@@ -2,7 +2,7 @@
  * Single-precision log2 function.
  *
  * Copyright (c) 2017-2018, Arm Limited.
- * SPDX-License-Identifier: MIT OR Apache-2.0 WITH LLVM-exception
+ * SPDX-License-Identifier: MIT
  */
 
 #include <math.h>

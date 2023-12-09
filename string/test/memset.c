@@ -2,7 +2,7 @@
  * memset test.
  *
  * Copyright (c) 2019-2020, Arm Limited.
- * SPDX-License-Identifier: MIT OR Apache-2.0 WITH LLVM-exception
+ * SPDX-License-Identifier: MIT
  */
 
 #include <stdint.h>
@@ -25,9 +25,6 @@ static const struct fun
   F(memset, 0)
 #if __aarch64__
   F(__memset_aarch64, 1)
-# if WANT_MOPS
-  F(__memset_aarch64_mops, 1)
-# endif
 #elif __arm__
   F(__memset_arm, 0)
 #endif
