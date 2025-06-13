@@ -40,3 +40,22 @@ OPTRT_STRING_ARM_SRC_FILES_FOR_ARMV7_M = [
   "$OPTRTDIR/string/arm/strcpy.c",
   "$OPTRTDIR/string/arm/strlen-armv6t2.S",
 ]
+
+optimized_inherited_configs = [
+  "//build/config/compiler:no_exceptions",
+  "//build/config/compiler:export_dynamic",
+  "//build/config/compiler:runtime_library",
+  "//build/config/compiler:no_rtti",
+  "//build/config/compiler:thin_archive",
+  "//build/config/sanitizers:default_sanitizer_flags",
+  "//build/config/compiler:default_symbols",
+  "//build/config/compiler:default_stack_frames",
+  "//build/config/compiler:default_optimization",
+  "//build/config/compiler:default_include_dirs",
+  "//build/config/compiler:chromium_code",
+  "//build/config/compiler:compiler_arm_thumb",
+  "//build/config/compiler:compiler_arm_fpu",
+  "//build/config/compiler:compiler",
+  "//build/config/compiler:afdo_optimize_size",
+  "//build/config/compiler:afdo",
+]

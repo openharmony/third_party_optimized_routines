@@ -19,7 +19,8 @@
         "features": [],
         "adapted_system_type": [
             "mini",
-            "small"
+            "small",
+            "standard"
         ],
         "rom": "36KB",
         "ram": "72KB",
@@ -28,8 +29,26 @@
             "third_party": []
         },
         "build": {
-            "sub_component": [],
-            "inner_kits": [],
+            "sub_component": [
+                "//third_party/optimized-routines:optimized_static",
+                "//third_party/optimized-routines:optimize_math"
+            ],
+            "inner_kits": [
+                {
+                    "header": {
+                        "header_base": "//third_party/optimized-routines/math",
+                        "header_files": []
+                    },
+                    "name": "//third_party/optimized-routines:optimized_static"
+                },
+                {
+                    "header": {
+                        "header_base": "//third_party/optimized-routines/math",
+                        "header_files": []
+                    },
+                    "name": "//third_party/optimized-routines:optimize_math"
+                }
+            ],
             "test": []
         }
     }
