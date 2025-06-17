@@ -455,22 +455,30 @@
 
 #define ENTRY(name)	ENTRY_ALIGN(name, 6)
 
-#define ENTRY_ALIAS(name)	\
-  .global name;		\
-  .type name,%function;	\
-  name:
+#ifdef __IS_LLVM_BUILD
+  #define ENTRY_ALIAS(name)	\
+    .global name;		\
+    .type name,%function;	\
+    name:
 
-#if defined (IS_LEAF)
-# define END_UNWIND .cantunwind;
+  #define END(name)	\
+    .cfi_endproc;		\
+    .size name, .-name;
+
 #else
-# define END_UNWIND
-#endif
+  #if defined (IS_LEAF)
+    # define END_UNWIND .cantunwind;
+  #else
+    # define END_UNWIND
+  #endif
 
-#define END(name)	\
-  .cfi_endproc;		\
-  END_UNWIND		\
-  .fnend;		\
-  .size name, .-name;
+  #define END(name)	\
+    .cfi_endproc;		\
+    END_UNWIND		\
+    .fnend;		\
+    .size name, .-name;
+
+#endif
 
 #define L(l) .L ## l
 
