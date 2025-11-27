@@ -50,6 +50,10 @@ config("optimized_routines_stack_config") {
 if (!(is_lite_system && current_os == "ohos")) {
   static_library("optimized_static") {
     output_name = "liboptimize"
+    visibility = [
+      ":*",
+      "//third_party/musl/*",
+    ]
 
     public_configs = [ ":optimized_routines_config" ]
     configs += [ ":optimized_routines_stack_config" ]
@@ -223,6 +227,10 @@ if (!(is_lite_system && current_os == "ohos")) {
   static_library("optimize_math") {
     output_name = "liboptimize_math"
     output_extension = "a"
+    visibility = [
+      ":*",
+      "//third_party/musl/*",
+    ]
 
     public_configs = [ ":optimized_routines_config" ]
     configs += [ ":optimized_routines_stack_config" ]
