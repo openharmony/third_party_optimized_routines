@@ -53,7 +53,7 @@ if (!(is_lite_system && current_os == "ohos")) {
     visibility = [
       ":*",
       "//third_party/musl/*",
-      "//out/{product_name}/build_configs/thirdparty/optimized_routines/*",
+      "//out/*",
     ]
 
     public_configs = [ ":optimized_routines_config" ]
