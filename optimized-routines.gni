@@ -46,7 +46,6 @@ optimized_inherited_configs = [
   "//build/config/compiler:export_dynamic",
   "//build/config/compiler:runtime_library",
   "//build/config/compiler:no_rtti",
-  "//build/config/compiler:thin_archive",
   "//build/config/sanitizers:default_sanitizer_flags",
   "//build/config/compiler:default_symbols",
   "//build/config/compiler:default_stack_frames",

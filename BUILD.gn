@@ -48,7 +48,7 @@ config("optimized_routines_stack_config") {
 }
 
 if (!(is_lite_system && current_os == "ohos")) {
-  static_library("optimized_static") {
+  ohos_static_library("optimized_static") {
     output_name = "liboptimize"
     visibility = [
       ":*",
@@ -57,7 +57,7 @@ if (!(is_lite_system && current_os == "ohos")) {
     ]
 
     public_configs = [ ":optimized_routines_config" ]
-    configs += [ ":optimized_routines_stack_config" ]
+    configs = [ ":optimized_routines_stack_config" ]
     
     sources = []
     defines = []
@@ -213,7 +213,7 @@ if (!(is_lite_system && current_os == "ohos")) {
     ]
     cflags_c = [ "-fno-lto" ]
 
-    configs -= optimized_inherited_configs
+    remove_configs = optimized_inherited_configs
     configs += [ "//build/config/components/musl:soft_musl_config" ]
     if (use_hwasan) {
       defines += [ "HWASAN_REMOVE_CLEANUP" ]
@@ -223,9 +223,11 @@ if (!(is_lite_system && current_os == "ohos")) {
         "-hwasan-instrument-check-enabled=true",
       ]
     }
+    subsystem_name = "thirdparty"
+    part_name = "optimized_routines"
   }
 
-  static_library("optimize_math") {
+  ohos_static_library("optimize_math") {
     output_name = "liboptimize_math"
     output_extension = "a"
     visibility = [
@@ -235,7 +237,7 @@ if (!(is_lite_system && current_os == "ohos")) {
     ]
 
     public_configs = [ ":optimized_routines_config" ]
-    configs += [ ":optimized_routines_stack_config" ]
+    configs = [ ":optimized_routines_stack_config" ]
     sources = []
 
     if (musl_arch == "aarch64") {
@@ -258,7 +260,7 @@ if (!(is_lite_system && current_os == "ohos")) {
     ]
     cflags_c = [ "-fno-lto" ]
 
-    configs -= optimized_inherited_configs
+    remove_configs = optimized_inherited_configs
     configs += [ "//build/config/components/musl:soft_musl_config" ]
     if (use_hwasan) {
       configs += [ "//build/config/sanitizers:default_sanitizer_flags" ]
@@ -267,5 +269,7 @@ if (!(is_lite_system && current_os == "ohos")) {
         "-hwasan-instrument-check-enabled=true",
       ]
     }
+    subsystem_name = "thirdparty"
+    part_name = "optimized_routines"
   }
 }
